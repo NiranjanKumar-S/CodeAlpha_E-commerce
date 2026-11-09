@@ -316,7 +316,7 @@ const defaultSeedData = {
       payment_method: 'cod',
       payment_status: 'paid',
       order_status: 'Delivered',
-      created_at: new Date(Date.now() - 5 * 86400000).toISOString()
+      created_at: '2026-11-04T12:00:00.000Z'
     },
     {
       order_id: 2,
@@ -331,7 +331,7 @@ const defaultSeedData = {
       payment_method: 'online',
       payment_status: 'paid',
       order_status: 'Processing',
-      created_at: new Date(Date.now() - 2 * 86400000).toISOString()
+      created_at: '2026-11-07T12:00:00.000Z'
     },
     {
       order_id: 3,
@@ -346,7 +346,7 @@ const defaultSeedData = {
       payment_method: 'cod',
       payment_status: 'pending',
       order_status: 'Pending',
-      created_at: new Date().toISOString()
+      created_at: '2026-11-09T12:00:00.000Z'
     }
   ],
 
@@ -457,12 +457,12 @@ const defaultSeedData = {
   ],
 
   newsletter_subscribers: [
-    { subscriber_id: 1, email: 'vip.customer@example.com', created_at: new Date().toISOString() },
-    { subscriber_id: 2, email: 'tech.insider@example.com', created_at: new Date().toISOString() }
+    { subscriber_id: 1, email: 'vip.customer@example.com', created_at: '2026-01-01T12:00:00.000Z' },
+    { subscriber_id: 2, email: 'tech.insider@example.com', created_at: '2026-01-02T12:00:00.000Z' }
   ],
 
   wishlists: [
-    { wishlist_id: 1, user_id: 2, product_id: 2, created_at: new Date().toISOString() }
+    { wishlist_id: 1, user_id: 2, product_id: 2, created_at: '2026-01-02T12:00:00.000Z' }
   ]
 };
 
