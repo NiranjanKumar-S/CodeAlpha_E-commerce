@@ -1,0 +1,627 @@
+{
+  "users": [
+    {
+      "user_id": 1,
+      "name": "Admin User",
+      "email": "admin@luxe.com",
+      "phone": "+1-555-0199",
+      "password": "$2b$10$9VRNEz5UimeRe4G7uNyeHe.KEaNkM6mExFWjTDrcB3mHlaS3emHNe",
+      "role": "admin",
+      "reset_token": null,
+      "reset_token_expiry": null,
+      "created_at": "2026-01-01T00:00:00.000Z"
+    },
+    {
+      "user_id": 2,
+      "name": "John Doe",
+      "email": "john@example.com",
+      "phone": "+1-555-0123",
+      "password": "$2b$10$Int6M6l36YkIN.NK8nQiJ.1N90D4OufxWBHqwcZqGWHX/s84a7MPO",
+      "role": "customer",
+      "reset_token": null,
+      "reset_token_expiry": null,
+      "created_at": "2026-01-02T00:00:00.000Z"
+    },
+    {
+      "user_id": 3,
+      "name": "Emily Davis",
+      "email": "emily@example.com",
+      "phone": "+1-555-0145",
+      "password": "$2b$10$Int6M6l36YkIN.NK8nQiJ.1N90D4OufxWBHqwcZqGWHX/s84a7MPO",
+      "role": "customer",
+      "reset_token": null,
+      "reset_token_expiry": null,
+      "created_at": "2026-01-03T00:00:00.000Z"
+    },
+    {
+      "user_id": 4,
+      "name": "Test Customer",
+      "email": "testuser_1794211866709@example.com",
+      "phone": "+1-555-9988",
+      "password": "$2b$10$PnaoC/cO2O/vKUFrzOEyHuUXPWOL/nrjcLpNFjMxaciI26p4VbsX.",
+      "role": "customer",
+      "reset_token": null,
+      "reset_token_expiry": null,
+      "created_at": "2026-11-09T08:11:06.814Z"
+    }
+  ],
+  "categories": [
+    {
+      "category_id": 1,
+      "category_name": "Audio & Sound",
+      "slug": "audio-sound",
+      "description": "Premium wireless headphones, studio earbuds, and high-fidelity sound systems.",
+      "image": "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=800&q=80",
+      "created_at": "2026-01-01T00:00:00.000Z"
+    },
+    {
+      "category_id": 2,
+      "category_name": "Watches & Wearables",
+      "slug": "watches-wearables",
+      "description": "Luxury timepieces, modern smartwatches, and minimalist fitness bands.",
+      "image": "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=800&q=80",
+      "created_at": "2026-01-01T00:00:00.000Z"
+    },
+    {
+      "category_id": 3,
+      "category_name": "Computing & Tech",
+      "slug": "computing-tech",
+      "description": "Pro laptops, ultra-slim mechanical keyboards, and precision optical mice.",
+      "image": "https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=800&q=80",
+      "created_at": "2026-01-01T00:00:00.000Z"
+    },
+    {
+      "category_id": 4,
+      "category_name": "Footwear & Style",
+      "slug": "footwear-style",
+      "description": "Engineered running sneakers, premium leather boots, and urban lifestyle footwear.",
+      "image": "https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=800&q=80",
+      "created_at": "2026-01-01T00:00:00.000Z"
+    },
+    {
+      "category_id": 5,
+      "category_name": "Home & Living",
+      "slug": "home-living",
+      "description": "Artisan ceramic tableware, minimalist desk lamps, and acoustic living decor.",
+      "image": "https://images.unsplash.com/photo-1583847268964-b28dc8f51f92?w=800&q=80",
+      "created_at": "2026-01-01T00:00:00.000Z"
+    },
+    {
+      "category_id": 6,
+      "category_name": "Apparel & Accessories",
+      "slug": "apparel-accessories",
+      "description": "Designer minimalist jackets, genuine leather backpacks, and organic cotton essentials.",
+      "image": "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=800&q=80",
+      "created_at": "2026-01-01T00:00:00.000Z"
+    }
+  ],
+  "products": [
+    {
+      "product_id": 1,
+      "category_id": 1,
+      "product_name": "Luxe Sonic Studio Wireless Headphones",
+      "slug": "luxe-sonic-studio-wireless-headphones",
+      "description": "Engineered with 40mm beryllium drivers, active noise cancellation with transparency mode, 45-hour battery life, and buttery soft memory foam ear cushions.",
+      "price": 299,
+      "discount_price": 249,
+      "stock": 44,
+      "image": "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=800&q=80",
+      "status": "active",
+      "is_featured": 1,
+      "is_trending": 1,
+      "created_at": "2026-01-01T00:00:00.000Z"
+    },
+    {
+      "product_id": 2,
+      "category_id": 2,
+      "product_name": "Chronos Horizon Minimalist Smartwatch",
+      "slug": "chronos-horizon-minimalist-smartwatch",
+      "description": "Forged aerospace titanium case with AMOLED retina display, 7-day battery life, continuous heart and SpO2 tracking, and waterproof to 50 meters.",
+      "price": 349,
+      "discount_price": 299,
+      "stock": 30,
+      "image": "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=800&q=80",
+      "status": "active",
+      "is_featured": 1,
+      "is_trending": 1,
+      "created_at": "2026-01-02T00:00:00.000Z"
+    },
+    {
+      "product_id": 3,
+      "category_id": 4,
+      "product_name": "AeroGlide Carbon Pro Running Shoes",
+      "slug": "aeroglide-carbon-pro-running-shoes",
+      "description": "Ultra-responsive nitrogen-infused foam midsole with embedded curved carbon fiber plate. Featherweight breathable knit upper designed for record-breaking marathons.",
+      "price": 189,
+      "discount_price": 159,
+      "stock": 60,
+      "image": "https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=800&q=80",
+      "status": "active",
+      "is_featured": 1,
+      "is_trending": 1,
+      "created_at": "2026-01-03T00:00:00.000Z"
+    },
+    {
+      "product_id": 4,
+      "category_id": 3,
+      "product_name": "Apex Mechanical Keypad & Wrist Rest",
+      "slug": "apex-mechanical-keypad-wrist-rest",
+      "description": "CNC machined anodized aluminum body, hot-swappable lubricated linear switches, per-key RGB backlighting, and magnetic walnut wrist rest.",
+      "price": 169,
+      "discount_price": 139,
+      "stock": 25,
+      "image": "https://images.unsplash.com/photo-1587829741301-dc798b83add3?w=800&q=80",
+      "status": "active",
+      "is_featured": 1,
+      "is_trending": 0,
+      "created_at": "2026-01-04T00:00:00.000Z"
+    },
+    {
+      "product_id": 5,
+      "category_id": 6,
+      "product_name": "Vanguard Full-Grain Leather Backpack",
+      "slug": "vanguard-full-grain-leather-backpack",
+      "description": "Handcrafted from vegetable-tanned full-grain leather with dedicated 16-inch padded laptop compartment, waterproof YKK zippers, and ergonomic shoulder straps.",
+      "price": 220,
+      "discount_price": 189,
+      "stock": 18,
+      "image": "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=800&q=80",
+      "status": "active",
+      "is_featured": 0,
+      "is_trending": 1,
+      "created_at": "2026-01-05T00:00:00.000Z"
+    },
+    {
+      "product_id": 6,
+      "category_id": 1,
+      "product_name": "Pulse Pods Pro Spatial Audio Earbuds",
+      "slug": "pulse-pods-pro-spatial-audio-earbuds",
+      "description": "Next-generation true wireless earbuds featuring dynamic head tracking, adaptive EQ, wind-noise reduction microphones, and Qi wireless charging case.",
+      "price": 179,
+      "discount_price": 149,
+      "stock": 50,
+      "image": "https://images.unsplash.com/photo-1590658268037-6bf12165a8df?w=800&q=80",
+      "status": "active",
+      "is_featured": 0,
+      "is_trending": 1,
+      "created_at": "2026-01-06T00:00:00.000Z"
+    },
+    {
+      "product_id": 7,
+      "category_id": 5,
+      "product_name": "Lumina Nordic Warm LED Ambient Lamp",
+      "slug": "lumina-nordic-warm-led-ambient-lamp",
+      "description": "Minimalist architectural table lamp crafted from solid brushed brass with touch-dimming sensor, 2700K warm diffuse lighting, and USB-C power delivery.",
+      "price": 119,
+      "discount_price": 99,
+      "stock": 35,
+      "image": "https://images.unsplash.com/photo-1507473885765-e6ed057f782c?w=800&q=80",
+      "status": "active",
+      "is_featured": 1,
+      "is_trending": 0,
+      "created_at": "2026-01-07T00:00:00.000Z"
+    },
+    {
+      "product_id": 8,
+      "category_id": 2,
+      "product_name": "Monolith Automatic Steel Field Watch",
+      "slug": "monolith-automatic-steel-field-watch",
+      "description": "Swiss automatic movement with 38-hour reserve, sapphire crystal with anti-reflective coating, 316L stainless steel bracelet, and Super-LumiNova markers.",
+      "price": 499,
+      "discount_price": 449,
+      "stock": 12,
+      "image": "https://images.unsplash.com/photo-1524805444758-089113d48a6d?w=800&q=80",
+      "status": "active",
+      "is_featured": 0,
+      "is_trending": 1,
+      "created_at": "2026-01-08T00:00:00.000Z"
+    },
+    {
+      "product_id": 9,
+      "category_id": 3,
+      "product_name": "Precision Darkfield Wireless Laser Mouse",
+      "slug": "precision-darkfield-wireless-laser-mouse",
+      "description": "Ergonomic electromagnetic scroll wheel, 8000 DPI sensor tracking on glass, multi-device fast pairing, and silent tactile click buttons.",
+      "price": 99,
+      "discount_price": 85,
+      "stock": 40,
+      "image": "https://images.unsplash.com/photo-1615663245857-ac93bb7c39e7?w=800&q=80",
+      "status": "active",
+      "is_featured": 0,
+      "is_trending": 0,
+      "created_at": "2026-01-09T00:00:00.000Z"
+    },
+    {
+      "product_id": 10,
+      "category_id": 4,
+      "product_name": "Urban Nomad Minimalist Canvas Sneakers",
+      "slug": "urban-nomad-minimalist-canvas-sneakers",
+      "description": "Sustainable organic cotton canvas with natural vulcanized rubber sole, cushioned cork insoles, and timeless low-top street silhouette.",
+      "price": 89,
+      "discount_price": 69,
+      "stock": 55,
+      "image": "https://images.unsplash.com/photo-1525966222134-fcfa99b8ae77?w=800&q=80",
+      "status": "active",
+      "is_featured": 0,
+      "is_trending": 0,
+      "created_at": "2026-01-10T00:00:00.000Z"
+    },
+    {
+      "product_id": 11,
+      "category_id": 5,
+      "product_name": "Komorebi Handcrafted Ceramic Pour-Over Set",
+      "slug": "komorebi-handcrafted-ceramic-pour-over-set",
+      "description": "Artisan glazed stoneware dripper and serving carafe for barista-level specialty coffee brewing at home. Heat-retentive and dishwasher safe.",
+      "price": 75,
+      "discount_price": 59,
+      "stock": 4,
+      "image": "https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?w=800&q=80",
+      "status": "active",
+      "is_featured": 0,
+      "is_trending": 0,
+      "created_at": "2026-01-11T00:00:00.000Z"
+    },
+    {
+      "product_id": 12,
+      "category_id": 6,
+      "product_name": "Solstice Polarized Acetate Sunglasses",
+      "slug": "solstice-polarized-acetate-sunglasses",
+      "description": "Italian Mazzucchelli hand-polished acetate frame with Category 3 polarized UV400 lenses and 5-barrel German hinges for all-day glare protection.",
+      "price": 145,
+      "discount_price": 119,
+      "stock": 3,
+      "image": "https://images.unsplash.com/photo-1511499767150-a48a237f0083?w=800&q=80",
+      "status": "active",
+      "is_featured": 1,
+      "is_trending": 0,
+      "created_at": "2026-01-12T00:00:00.000Z"
+    }
+  ],
+  "carts": [
+    {
+      "cart_id": 1,
+      "user_id": null,
+      "session_id": "test_session_1794211866815",
+      "created_at": "2026-11-09T08:11:06.816Z"
+    },
+    {
+      "cart_id": 2,
+      "user_id": null,
+      "session_id": "order_test_1794211866820",
+      "created_at": "2026-11-09T08:11:06.820Z"
+    },
+    {
+      "cart_id": 3,
+      "user_id": null,
+      "session_id": "4txZMk9sfmqsZpTXmSCkHTc-5J0VuDM5",
+      "created_at": "2026-11-09T08:11:08.654Z"
+    },
+    {
+      "cart_id": 4,
+      "user_id": null,
+      "session_id": "eQusMh49owQ8znWC5CwKy2ogsiDnFHI9",
+      "created_at": "2026-11-09T08:11:08.705Z"
+    },
+    {
+      "cart_id": 5,
+      "user_id": null,
+      "session_id": "cbVda90nHPAAseXPlAc2r_8gUvAtuOhW",
+      "created_at": "2026-11-09T08:11:08.728Z"
+    },
+    {
+      "cart_id": 6,
+      "user_id": null,
+      "session_id": "tLK6CgNFzvD0I4X6_sIdRIGmBuiiUfAj",
+      "created_at": "2026-11-09T08:11:08.750Z"
+    },
+    {
+      "cart_id": 7,
+      "user_id": null,
+      "session_id": "ODGCi3w6OTtTdaG7WUGgWTpoEYPD-ZXO",
+      "created_at": "2026-11-09T08:11:08.904Z"
+    },
+    {
+      "cart_id": 8,
+      "user_id": null,
+      "session_id": "_NRjBWVv7yU6RUY_jQ3EOce6K__adQ70",
+      "created_at": "2026-11-09T08:11:08.921Z"
+    },
+    {
+      "cart_id": 9,
+      "user_id": null,
+      "session_id": "_-qvlf2ieqRb4e5fxwedDStDoGxrpvdq",
+      "created_at": "2026-11-09T08:11:08.938Z"
+    },
+    {
+      "cart_id": 10,
+      "user_id": null,
+      "session_id": "FI0qIDTvDtWULdguVg4s77qm42cddMyv",
+      "created_at": "2026-11-09T08:11:08.952Z"
+    },
+    {
+      "cart_id": 11,
+      "user_id": null,
+      "session_id": "W52jtptvcZ9f_d8_DUO8q4DkU9jSu8nS",
+      "created_at": "2026-11-09T08:11:08.968Z"
+    },
+    {
+      "cart_id": 12,
+      "user_id": null,
+      "session_id": "Xo7XctlEBM0AGRdEWeTpRikW4pNPY_jf",
+      "created_at": "2026-11-09T08:11:08.985Z"
+    },
+    {
+      "cart_id": 13,
+      "user_id": null,
+      "session_id": "ZDgchpflGtk83kgARLuGHNFYABM8Cm5Y",
+      "created_at": "2026-11-09T08:11:09.000Z"
+    },
+    {
+      "cart_id": 14,
+      "user_id": null,
+      "session_id": "zVO6Ysa_0vo5Vizx5V4zOPWwU7iVNuYO",
+      "created_at": "2026-11-09T08:11:09.019Z"
+    },
+    {
+      "cart_id": 15,
+      "user_id": null,
+      "session_id": "jedprELAX-6dqnNDMa9Bbp_cuDzdnpNm",
+      "created_at": "2026-11-09T08:11:09.034Z"
+    },
+    {
+      "cart_id": 16,
+      "user_id": null,
+      "session_id": "H2BXVOOaWA7DDgVUL9Kb3yNGycr0B1wQ",
+      "created_at": "2026-11-09T08:11:09.044Z"
+    },
+    {
+      "cart_id": 17,
+      "user_id": null,
+      "session_id": "1ASNLD9p2vzQUlIvVbaobWmuLaFBFVp_",
+      "created_at": "2026-11-09T08:11:09.052Z"
+    },
+    {
+      "cart_id": 18,
+      "user_id": null,
+      "session_id": "ZVNXG6cXvxlgTTjVxMfPdwBHT-KhiMSn",
+      "created_at": "2026-11-09T08:11:09.131Z"
+    },
+    {
+      "cart_id": 19,
+      "user_id": 1,
+      "session_id": null,
+      "created_at": "2026-11-09T08:11:09.347Z"
+    }
+  ],
+  "cart_items": [],
+  "addresses": [
+    {
+      "address_id": 1,
+      "user_id": 2,
+      "full_name": "John Doe",
+      "phone": "+1-555-0123",
+      "address_line": "742 Evergreen Terrace",
+      "city": "Springfield",
+      "state": "OR",
+      "postal_code": "97477",
+      "created_at": "2026-01-02T00:00:00.000Z"
+    },
+    {
+      "address_id": 2,
+      "user_id": 3,
+      "full_name": "Emily Davis",
+      "phone": "+1-555-0145",
+      "address_line": "1000 Broadway Ave, Apt 4B",
+      "city": "New York",
+      "state": "NY",
+      "postal_code": "10001",
+      "created_at": "2026-01-03T00:00:00.000Z"
+    },
+    {
+      "address_id": 1,
+      "user_id": null,
+      "full_name": "Jane Test",
+      "phone": "+1-555-7766",
+      "address_line": "123 Test Street",
+      "city": "Portland",
+      "state": "OR",
+      "postal_code": "97201",
+      "created_at": "2026-11-09T08:11:06.821Z"
+    }
+  ],
+  "orders": [
+    {
+      "order_id": 1,
+      "order_number": "ORD-20261101-1001",
+      "user_id": 2,
+      "address_id": 1,
+      "subtotal": 249,
+      "shipping_fee": 0,
+      "discount_amount": 24.9,
+      "total_amount": 224.1,
+      "coupon_code": "WELCOME10",
+      "payment_method": "cod",
+      "payment_status": "paid",
+      "order_status": "Delivered",
+      "created_at": "2026-11-04T08:10:58.454Z"
+    },
+    {
+      "order_id": 2,
+      "order_number": "ORD-20261105-1002",
+      "user_id": 3,
+      "address_id": 2,
+      "subtotal": 299,
+      "shipping_fee": 0,
+      "discount_amount": 0,
+      "total_amount": 299,
+      "coupon_code": null,
+      "payment_method": "online",
+      "payment_status": "paid",
+      "order_status": "Processing",
+      "created_at": "2026-11-07T08:10:58.454Z"
+    },
+    {
+      "order_id": 3,
+      "order_number": "ORD-20261108-1003",
+      "user_id": 2,
+      "address_id": 1,
+      "subtotal": 159,
+      "shipping_fee": 10,
+      "discount_amount": 0,
+      "total_amount": 169,
+      "coupon_code": null,
+      "payment_method": "cod",
+      "payment_status": "pending",
+      "order_status": "Pending",
+      "created_at": "2026-11-09T08:10:58.454Z"
+    },
+    {
+      "order_id": 4,
+      "order_number": "ORD-20261109-5169",
+      "user_id": null,
+      "address_id": 1,
+      "subtotal": 249,
+      "shipping_fee": 0,
+      "discount_amount": 24.9,
+      "total_amount": 224.1,
+      "coupon_code": "WELCOME10",
+      "payment_method": "cod",
+      "payment_status": "paid",
+      "order_status": "Shipped",
+      "created_at": "2026-11-09T08:11:06.822Z"
+    }
+  ],
+  "order_items": [
+    {
+      "order_item_id": 1,
+      "order_id": 1,
+      "product_id": 1,
+      "product_name": "Luxe Sonic Studio Wireless Headphones",
+      "product_image": "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=800&q=80",
+      "quantity": 1,
+      "price": 249,
+      "subtotal": 249
+    },
+    {
+      "order_item_id": 2,
+      "order_id": 2,
+      "product_id": 2,
+      "product_name": "Chronos Horizon Minimalist Smartwatch",
+      "product_image": "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=800&q=80",
+      "quantity": 1,
+      "price": 299,
+      "subtotal": 299
+    },
+    {
+      "order_item_id": 3,
+      "order_id": 3,
+      "product_id": 3,
+      "product_name": "AeroGlide Carbon Pro Running Shoes",
+      "product_image": "https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=800&q=80",
+      "quantity": 1,
+      "price": 159,
+      "subtotal": 159
+    },
+    {
+      "order_item_id": 4,
+      "order_id": 4,
+      "product_id": 1,
+      "product_name": "Luxe Sonic Studio Wireless Headphones",
+      "product_image": "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=800&q=80",
+      "quantity": 1,
+      "price": 249,
+      "subtotal": 249
+    }
+  ],
+  "reviews": [
+    {
+      "review_id": 1,
+      "user_id": 2,
+      "product_id": 1,
+      "rating": 5,
+      "comment": "The sound quality and active noise cancellation are simply extraordinary. Super comfortable for long travel and work sessions!",
+      "created_at": "2026-01-10T00:00:00.000Z"
+    },
+    {
+      "review_id": 2,
+      "user_id": 3,
+      "product_id": 1,
+      "rating": 5,
+      "comment": "Best headphones I have ever owned. The matte finish and packaging felt like Apple-tier luxury.",
+      "created_at": "2026-01-12T00:00:00.000Z"
+    },
+    {
+      "review_id": 3,
+      "user_id": 2,
+      "product_id": 2,
+      "rating": 4,
+      "comment": "Battery easily lasts me a full week with daily workouts. The titanium chassis feels exceptionally premium.",
+      "created_at": "2026-01-15T00:00:00.000Z"
+    },
+    {
+      "review_id": 4,
+      "user_id": 3,
+      "product_id": 3,
+      "rating": 5,
+      "comment": "Shaved 40 seconds off my 10k time! Insanely springy energy return and fit like a glove.",
+      "created_at": "2026-01-18T00:00:00.000Z"
+    },
+    {
+      "review_id": 5,
+      "user_id": 2,
+      "product_id": 5,
+      "rating": 5,
+      "comment": "The leather aroma and stitching craftsmanship are top notch. Worth every single penny.",
+      "created_at": "2026-01-20T00:00:00.000Z"
+    }
+  ],
+  "coupons": [
+    {
+      "coupon_id": 1,
+      "coupon_code": "WELCOME10",
+      "discount_type": "percentage",
+      "discount_value": 10,
+      "min_spend": 50,
+      "expiry_date": "2028-12-31",
+      "status": "active"
+    },
+    {
+      "coupon_id": 2,
+      "coupon_code": "SAVE20",
+      "discount_type": "percentage",
+      "discount_value": 20,
+      "min_spend": 100,
+      "expiry_date": "2028-12-31",
+      "status": "active"
+    },
+    {
+      "coupon_id": 3,
+      "coupon_code": "FLAT50",
+      "discount_type": "fixed",
+      "discount_value": 50,
+      "min_spend": 200,
+      "expiry_date": "2028-12-31",
+      "status": "active"
+    }
+  ],
+  "newsletter_subscribers": [
+    {
+      "subscriber_id": 1,
+      "email": "vip.customer@example.com",
+      "created_at": "2026-11-09T08:10:58.454Z"
+    },
+    {
+      "subscriber_id": 2,
+      "email": "tech.insider@example.com",
+      "created_at": "2026-11-09T08:10:58.454Z"
+    }
+  ],
+  "wishlists": [
+    {
+      "wishlist_id": 1,
+      "user_id": 2,
+      "product_id": 2,
+      "created_at": "2026-11-09T08:10:58.454Z"
+    }
+  ]
+}
