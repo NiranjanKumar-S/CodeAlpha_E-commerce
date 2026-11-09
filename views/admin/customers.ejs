@@ -1,0 +1,62 @@
+<%- include('../partials/adminHeader') %>
+
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-4 border-bottom">
+  <div>
+    <h1 class="h3 fw-bold mb-1">Registered Customers</h1>
+    <p class="text-muted small mb-0">Browse client profiles, registration dates, and authenticated customer records.</p>
+  </div>
+</div>
+
+<div class="card border-0 shadow-sm rounded-4 overflow-hidden bg-white">
+  <div class="table-responsive">
+    <table class="table align-middle mb-0">
+      <thead class="bg-light text-muted small text-uppercase">
+        <tr>
+          <th class="ps-4 py-3">Client Name</th>
+          <th class="py-3">Email Address</th>
+          <th class="py-3">Phone</th>
+          <th class="py-3">Account Role</th>
+          <th class="pe-4 py-3 text-end">Joined On</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% if (customers && customers.length > 0) { %>
+          <% customers.forEach(c => { %>
+            <tr>
+              <td class="ps-4 py-3">
+                <div class="d-flex align-items-center gap-3">
+                  <div class="rounded-circle bg-light border text-primary fw-bold d-flex align-items-center justify-content-center" style="width: 40px; height: 40px;">
+                    <%= c.name.charAt(0).toUpperCase() %>
+                  </div>
+                  <div>
+                    <div class="fw-bold text-dark"><%= c.name %></div>
+                    <span class="text-muted small">User ID: #<%= c.user_id %></span>
+                  </div>
+                </div>
+              </td>
+              <td class="py-3 text-muted"><%= c.email %></td>
+              <td class="py-3 text-muted"><%= c.phone || '—' %></td>
+              <td class="py-3">
+                <span class="badge bg-primary-subtle text-primary text-uppercase px-2 py-1"><%= c.role %></span>
+              </td>
+              <td class="pe-4 py-3 text-end text-muted small">
+                <%= new Date(c.created_at).toLocaleDateString() %>
+              </td>
+            </tr>
+          <% }) %>
+        <% } else { %>
+          <tr><td colspan="5" class="text-center py-4 text-muted">No registered customers yet.</td></tr>
+        <% } %>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+      </main>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="/js/main.js"></script>
+</body>
+</html>

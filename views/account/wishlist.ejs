@@ -1,0 +1,68 @@
+<%- include('../partials/header') %>
+
+<div class="container py-4">
+  <div class="d-flex justify-content-between align-items-center mb-4 pb-2 border-bottom">
+    <div>
+      <h1 class="h3 fw-bold mb-1">My Saved Wishlist</h1>
+      <p class="text-muted small">Items you have pinned for future luxury indulgence.</p>
+    </div>
+    <a href="/products" class="btn btn-luxe-primary btn-sm rounded-pill">
+      Explore Collections
+    </a>
+  </div>
+
+  <% if (items && items.length > 0) { %>
+    <div class="row g-4">
+      <% items.forEach(prod => { %>
+        <div class="col-6 col-md-4 col-lg-3">
+          <div class="product-card">
+            <div class="product-thumb-wrap">
+              <a href="/products/<%= prod.slug %>" class="w-100 h-100">
+                <img src="<%= prod.image || 'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=800&q=80' %>" alt="<%= prod.product_name %>" class="product-thumb" loading="lazy">
+              </a>
+
+              <form action="/account/wishlist/toggle/<%= prod.product_id %>" method="POST" class="m-0">
+                <button type="submit" class="wishlist-btn-overlay active" title="Remove from wishlist">
+                  <i class="fa-solid fa-heart text-danger"></i>
+                </button>
+              </form>
+            </div>
+
+            <div class="product-card-body">
+              <span class="product-category-sub"><%= prod.category_name %></span>
+              <h4 class="product-card-title">
+                <a href="/products/<%= prod.slug %>"><%= prod.product_name %></a>
+              </h4>
+
+              <div class="product-price-row">
+                <span class="price-current">$<%= parseFloat(prod.discount_price || prod.price).toFixed(2) %></span>
+                <% if (prod.discount_price) { %>
+                  <span class="price-original">$<%= parseFloat(prod.price).toFixed(2) %></span>
+                <% } %>
+              </div>
+
+              <div class="product-card-actions">
+                <form action="/cart/add" method="POST" class="w-100">
+                  <input type="hidden" name="productId" value="<%= prod.product_id %>">
+                  <input type="hidden" name="quantity" value="1">
+                  <button type="submit" class="btn btn-luxe-primary w-100">
+                    <i class="fa-solid fa-bag-shopping"></i> Move to Cart
+                  </button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      <% }) %>
+    </div>
+  <% } else { %>
+    <div class="empty-state-box my-4">
+      <i class="fa-regular fa-heart empty-icon"></i>
+      <h3 class="fw-bold">Your Wishlist is Empty</h3>
+      <p class="text-muted">Save your favorite timepieces, studio audio, and lifestyle gear by tapping the heart icon on any product.</p>
+      <a href="/products" class="btn btn-luxe-primary px-4 py-2 rounded-pill mt-2">Browse Catalog</a>
+    </div>
+  <% } %>
+</div>
+
+<%- include('../partials/footer') %>

@@ -1,0 +1,61 @@
+<%- include('../partials/header') %>
+
+<div class="container py-5">
+  <div class="row justify-content-center">
+    <div class="col-md-6 col-lg-5">
+      <div class="card border-0 shadow-lg rounded-4 p-4 p-md-5 bg-white">
+        <div class="text-center mb-4">
+          <h2 class="fw-bold" style="letter-spacing: -0.03em;">Welcome Back</h2>
+          <p class="text-muted small">Sign in to access your orders, wishlist, and profile.</p>
+        </div>
+
+        <form action="/auth/login" method="POST">
+          <div class="mb-3">
+            <label class="form-label small fw-bold text-muted">Email Address</label>
+            <div class="input-group">
+              <span class="input-group-text bg-light border-end-0 text-muted"><i class="fa-regular fa-envelope"></i></span>
+              <input type="email" name="email" class="form-control form-control-lg bg-light border-start-0" placeholder="name@example.com" value="<%= typeof formData !== 'undefined' && formData.email ? formData.email : '' %>" required autofocus>
+            </div>
+          </div>
+
+          <div class="mb-3">
+            <div class="d-flex justify-content-between align-items-center">
+              <label class="form-label small fw-bold text-muted mb-0">Password</label>
+              <a href="/auth/forgot-password" class="small text-decoration-none text-primary fw-semibold">Forgot Password?</a>
+            </div>
+            <div class="input-group mt-2">
+              <span class="input-group-text bg-light border-end-0 text-muted"><i class="fa-solid fa-lock"></i></span>
+              <input type="password" name="password" class="form-control form-control-lg bg-light border-start-0" placeholder="••••••••" required>
+            </div>
+          </div>
+
+          <div class="form-check mb-4">
+            <input class="form-check-input" type="checkbox" name="remember" id="rememberMe">
+            <label class="form-check-label small text-muted" for="rememberMe">
+              Remember me on this browser
+            </label>
+          </div>
+
+          <button type="submit" class="btn btn-luxe-primary w-100 py-3 rounded-pill fw-bold fs-6">
+            Sign In to Account
+          </button>
+        </form>
+
+        <div class="text-center mt-4 pt-3 border-top">
+          <p class="text-muted small mb-0">
+            Do not have an account? <a href="/auth/register" class="fw-bold text-primary text-decoration-none">Create an Account</a>
+          </p>
+        </div>
+
+        <!-- Sample Credentials Helper for Testing -->
+        <div class="mt-4 p-3 bg-light rounded-3 small border">
+          <div class="fw-bold mb-1 text-dark"><i class="fa-solid fa-key text-warning me-1"></i> Quick Test Credentials:</div>
+          <div class="text-muted"><strong>Admin:</strong> admin@luxe.com / Admin@123</div>
+          <div class="text-muted"><strong>Customer:</strong> john@example.com / Customer@123</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%- include('../partials/footer') %>

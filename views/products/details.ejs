@@ -1,0 +1,270 @@
+<%- include('../partials/header') %>
+
+<div class="container py-4">
+  <!-- Breadcrumbs -->
+  <nav aria-label="breadcrumb" class="mb-4">
+    <ol class="breadcrumb small">
+      <li class="breadcrumb-item"><a href="/" class="text-muted text-decoration-none">Home</a></li>
+      <li class="breadcrumb-item"><a href="/products" class="text-muted text-decoration-none">Products</a></li>
+      <li class="breadcrumb-item"><a href="/products/category/<%= product.category_slug %>" class="text-muted text-decoration-none"><%= product.category_name %></a></li>
+      <li class="breadcrumb-item active" aria-current="page"><%= product.product_name %></li>
+    </ol>
+  </nav>
+
+  <div class="row g-5 mb-5">
+    <!-- Product Gallery Column -->
+    <div class="col-lg-6">
+      <div class="card border-0 rounded-4 overflow-hidden shadow-sm bg-white p-3">
+        <div class="position-relative text-center rounded-3 overflow-hidden bg-light" style="min-height: 440px; display: flex; align-items: center; justify-content: center;">
+          <img id="mainProductImage" src="<%= product.image || 'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=800&q=80' %>" alt="<%= product.product_name %>" class="img-fluid" style="max-height: 480px; object-fit: contain;">
+          
+          <% if (product.discount_price && product.discount_price < product.price) { %>
+            <span class="badge bg-danger position-absolute top-0 start-0 m-3 px-3 py-2 rounded-pill fs-7 fw-bold">
+              SAVE $<%= (product.price - product.discount_price).toFixed(0) %>
+            </span>
+          <% } %>
+        </div>
+      </div>
+    </div>
+
+    <!-- Product Details Information Column -->
+    <div class="col-lg-6">
+      <div class="ps-lg-3">
+        <a href="/products/category/<%= product.category_slug %>" class="text-uppercase small fw-bold text-primary text-decoration-none" style="letter-spacing: 0.08em;">
+          <%= product.category_name %>
+        </a>
+        <h1 class="display-6 fw-bold mt-1 mb-2" style="letter-spacing: -0.03em;"><%= product.product_name %></h1>
+
+        <!-- Rating & Reviews -->
+        <div class="d-flex align-items-center gap-2 mb-3">
+          <div class="text-warning small">
+            <% const r = Math.round(ratingStats.avg_rating); %>
+            <% for (let i = 1; i <= 5; i++) { %>
+              <i class="fa-solid fa-star <%= i <= r ? 'text-warning' : 'text-secondary-subtle' %>"></i>
+            <% } %>
+          </div>
+          <span class="fw-bold small"><%= ratingStats.avg_rating %></span>
+          <span class="text-muted small">(<%= ratingStats.review_count %> verified reviews)</span>
+        </div>
+
+        <!-- Price -->
+        <div class="d-flex align-items-baseline gap-3 mb-3">
+          <% if (product.discount_price && product.discount_price < product.price) { %>
+            <span class="display-6 fw-bold text-dark">$<%= parseFloat(product.discount_price).toFixed(2) %></span>
+            <span class="fs-4 text-muted text-decoration-line-through">$<%= parseFloat(product.price).toFixed(2) %></span>
+          <% } else { %>
+            <span class="display-6 fw-bold text-dark">$<%= parseFloat(product.price).toFixed(2) %></span>
+          <% } %>
+        </div>
+
+        <!-- Stock Status -->
+        <div class="mb-4">
+          <% if (product.stock > 10) { %>
+            <span class="badge bg-success-subtle text-success px-3 py-2 rounded-pill fw-semibold">
+              <i class="fa-solid fa-circle-check me-1"></i> In Stock & Ready to Dispatch (<%= product.stock %> units available)
+            </span>
+          <% } else if (product.stock > 0) { %>
+            <span class="badge bg-warning-subtle text-warning-emphasis px-3 py-2 rounded-pill fw-semibold">
+              <i class="fa-solid fa-triangle-exclamation me-1"></i> Low Stock: Only <%= product.stock %> units remaining
+            </span>
+          <% } else { %>
+            <span class="badge bg-danger-subtle text-danger px-3 py-2 rounded-pill fw-semibold">
+              <i class="fa-solid fa-circle-xmark me-1"></i> Currently Sold Out
+            </span>
+          <% } %>
+        </div>
+
+        <!-- Short Description -->
+        <p class="text-muted mb-4 lead fs-6">
+          <%= product.description || 'Crafted with premium grade components designed for durability, tactile pleasure, and outstanding performance.' %>
+        </p>
+
+        <!-- Add to Cart Form -->
+        <% if (product.stock > 0) { %>
+          <form action="/cart/add" method="POST" class="mb-4">
+            <input type="hidden" name="productId" value="<%= product.product_id %>">
+            
+            <div class="row g-3 align-items-center mb-4">
+              <div class="col-sm-4">
+                <label class="form-label small fw-bold text-muted mb-1">Quantity</label>
+                <div class="input-group">
+                  <button type="button" class="btn btn-outline-secondary qty-btn-decrease">-</button>
+                  <input type="number" name="quantity" class="form-control text-center qty-input" value="1" min="1" max="<%= product.stock %>">
+                  <button type="button" class="btn btn-outline-secondary qty-btn-increase">+</button>
+                </div>
+              </div>
+            </div>
+
+            <div class="d-flex flex-wrap gap-3">
+              <button type="submit" class="btn btn-luxe-primary btn-lg px-4 flex-grow-1 rounded-pill">
+                <i class="fa-solid fa-bag-shopping me-2"></i> Add to Cart
+              </button>
+              
+              <button type="submit" name="buyNow" value="true" class="btn btn-luxe-accent btn-lg px-4 rounded-pill">
+                Instant Buy
+              </button>
+
+              <button type="button" onclick="document.getElementById('wishlistForm').submit();" class="btn btn-outline-secondary btn-lg rounded-circle" style="width: 52px; height: 52px;" title="Wishlist">
+                <i class="fa-<%= isWishlisted ? 'solid text-danger' : 'regular' %> fa-heart"></i>
+              </button>
+            </div>
+          </form>
+
+          <form id="wishlistForm" action="/account/wishlist/toggle/<%= product.product_id %>" method="POST" class="d-none"></form>
+        <% } else { %>
+          <div class="alert alert-warning rounded-3 mb-4">
+            <i class="fa-solid fa-bell me-2"></i> This product is currently out of stock. Join our newsletter to receive restock alerts.
+          </div>
+        <% } %>
+
+        <!-- Product Guarantee Highlights -->
+        <div class="p-3 bg-white border rounded-3 mt-4 small text-muted">
+          <div class="row g-2">
+            <div class="col-6"><i class="fa-solid fa-truck text-dark me-2"></i> Dispatched in 24 Hours</div>
+            <div class="col-6"><i class="fa-solid fa-shield-check text-dark me-2"></i> 2-Year Luxury Warranty</div>
+            <div class="col-6"><i class="fa-solid fa-arrow-rotate-left text-dark me-2"></i> 30-Day Returns</div>
+            <div class="col-6"><i class="fa-solid fa-lock text-dark me-2"></i> Secure Transaction</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Tabs: Specifications & Customer Reviews -->
+  <div class="card border-0 shadow-sm rounded-4 bg-white p-4 p-md-5 mb-5">
+    <ul class="nav nav-pills mb-4 border-bottom pb-3 gap-2" id="prodTab" role="tablist">
+      <li class="nav-item" role="presentation">
+        <button class="nav-link active rounded-pill fw-bold" id="specs-tab" data-bs-toggle="pill" data-bs-target="#specs" type="button" role="tab">
+          Specifications & Details
+        </button>
+      </li>
+      <li class="nav-item" role="presentation">
+        <button class="nav-link rounded-pill fw-bold" id="reviews-tab" data-bs-toggle="pill" data-bs-target="#reviews" type="button" role="tab">
+          Customer Reviews (<%= reviews ? reviews.length : 0 %>)
+        </button>
+      </li>
+    </ul>
+
+    <div class="tab-content" id="prodTabContent">
+      <!-- Specifications Tab -->
+      <div class="tab-pane fade show active" id="specs" role="tabpanel">
+        <div class="row g-4">
+          <div class="col-md-7">
+            <h5 class="fw-bold mb-3">Architectural Engineering & Materials</h5>
+            <p class="text-muted leading-relaxed">
+              <%= product.description %>
+            </p>
+            <p class="text-muted leading-relaxed">
+              Every detail is calibrated to deliver unmatched balance, ergonomic satisfaction, and peerless tactile feedback. Built to age gracefully over decades of daily stewardship.
+            </p>
+          </div>
+          <div class="col-md-5">
+            <div class="table-responsive">
+              <table class="table table-bordered table-sm small">
+                <tbody>
+                  <tr><th class="bg-light text-muted w-40">Category</th><td><%= product.category_name %></td></tr>
+                  <tr><th class="bg-light text-muted">Availability</th><td><%= product.stock > 0 ? 'In Stock (' + product.stock + ' units)' : 'Sold Out' %></td></tr>
+                  <tr><th class="bg-light text-muted">SKU Reference</th><td>LX-<%= product.product_id.toString().padStart(5, '0') %></td></tr>
+                  <tr><th class="bg-light text-muted">Shipping Class</th><td>White-Glove Express</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Customer Reviews Tab -->
+      <div class="tab-pane fade" id="reviews" role="tabpanel">
+        <div class="row g-5">
+          <!-- Existing Reviews List -->
+          <div class="col-md-7">
+            <h5 class="fw-bold mb-4">Patron Feedback</h5>
+            <% if (reviews && reviews.length > 0) { %>
+              <div class="d-flex flex-column gap-3">
+                <% reviews.forEach(rev => { %>
+                  <div class="p-3 bg-light rounded-3 border">
+                    <div class="d-flex justify-content-between align-items-center mb-2">
+                      <div class="fw-bold text-dark"><%= rev.user_name %></div>
+                      <div class="text-warning small">
+                        <% for (let i = 1; i <= 5; i++) { %>
+                          <i class="fa-solid fa-star <%= i <= rev.rating ? 'text-warning' : 'text-secondary-subtle' %>"></i>
+                        <% } %>
+                      </div>
+                    </div>
+                    <p class="text-muted small mb-1"><%= rev.comment %></p>
+                    <span class="text-secondary" style="font-size: 0.72rem;"><%= new Date(rev.created_at).toLocaleDateString() %></span>
+                  </div>
+                <% }) %>
+              </div>
+            <% } else { %>
+              <div class="p-4 bg-light rounded-3 text-center text-muted">
+                No reviews yet for this product. Be the first to share your experience!
+              </div>
+            <% } %>
+          </div>
+
+          <!-- Add Review Form -->
+          <div class="col-md-5">
+            <div class="card border rounded-3 p-4 bg-light">
+              <h5 class="fw-bold mb-3">Leave a Verified Review</h5>
+              <% if (typeof currentUser !== 'undefined' && currentUser) { %>
+                <form action="/products/<%= product.product_id %>/reviews" method="POST">
+                  <div class="mb-3">
+                    <label class="form-label small fw-bold text-muted">Rating (1 to 5 Stars)</label>
+                    <select name="rating" class="form-select" required>
+                      <option value="5">★★★★★ (5 Stars - Exceptional)</option>
+                      <option value="4">★★★★☆ (4 Stars - Great)</option>
+                      <option value="3">★★★☆☆ (3 Stars - Satisfactory)</option>
+                      <option value="2">★★☆☆☆ (2 Stars - Mediocre)</option>
+                      <option value="1">★☆☆☆☆ (1 Star - Poor)</option>
+                    </select>
+                  </div>
+                  <div class="mb-3">
+                    <label class="form-label small fw-bold text-muted">Your Comment</label>
+                    <textarea name="comment" rows="3" class="form-control" placeholder="Share your experience with build quality, comfort, and aesthetics..." required></textarea>
+                  </div>
+                  <button type="submit" class="btn btn-luxe-primary w-100 rounded-pill">Submit Review</button>
+                </form>
+              <% } else { %>
+                <p class="text-muted small">Please sign in to your verified customer account to write a review.</p>
+                <a href="/auth/login" class="btn btn-luxe-outline w-100 rounded-pill">Sign In to Review</a>
+              <% } %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Related Products Section -->
+  <% if (relatedProducts && relatedProducts.length > 0) { %>
+    <section class="mt-5">
+      <h3 class="fw-bold mb-4">Complementary Selections</h3>
+      <div class="row g-4">
+        <% relatedProducts.forEach(rel => { %>
+          <div class="col-6 col-md-3">
+            <div class="product-card">
+              <div class="product-thumb-wrap">
+                <a href="/products/<%= rel.slug %>" class="w-100 h-100">
+                  <img src="<%= rel.image || 'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=800&q=80' %>" alt="<%= rel.product_name %>" class="product-thumb" loading="lazy">
+                </a>
+              </div>
+              <div class="product-card-body">
+                <span class="product-category-sub"><%= rel.category_name %></span>
+                <h4 class="product-card-title"><a href="/products/<%= rel.slug %>"><%= rel.product_name %></a></h4>
+                <div class="product-price-row">
+                  <span class="price-current">$<%= parseFloat(rel.discount_price || rel.price).toFixed(2) %></span>
+                </div>
+                <div class="product-card-actions">
+                  <a href="/products/<%= rel.slug %>" class="btn btn-luxe-outline w-100">View</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        <% }) %>
+      </div>
+    </section>
+  <% } %>
+</div>
+
+<%- include('../partials/footer') %>

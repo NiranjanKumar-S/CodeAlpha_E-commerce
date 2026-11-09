@@ -1,0 +1,242 @@
+<%- include('../partials/header') %>
+
+<div class="container py-3">
+  <!-- Hero Banner -->
+  <div class="hero-banner mb-5">
+    <div class="row align-items-center">
+      <div class="col-lg-7">
+        <div class="hero-tagline">Autumn / Winter Edition 2026</div>
+        <h1 class="hero-title">Timeless Design.<br>Pure Precision.</h1>
+        <p class="hero-description">
+          Discover modern acoustic audio, titanium smartwatches, and minimalist architectural essentials crafted for the uncompromising connoisseur.
+        </p>
+        <div class="d-flex flex-wrap gap-3">
+          <a href="/products" class="btn btn-light btn-lg px-4 fw-bold rounded-pill text-dark">
+            Shop Collections <i class="fa-solid fa-arrow-right ms-2"></i>
+          </a>
+          <a href="/products/category/audio-sound" class="btn btn-outline-light btn-lg px-4 rounded-pill">
+            Acoustic Studio
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Featured Categories Section -->
+  <section class="mb-5">
+    <div class="d-flex justify-content-between align-items-end mb-4">
+      <div>
+        <span class="text-uppercase text-muted fw-bold small" style="letter-spacing: 0.1em;">Curated Departments</span>
+        <h2 class="fw-bold m-0" style="letter-spacing: -0.03em;">Featured Categories</h2>
+      </div>
+      <a href="/products" class="text-decoration-none fw-semibold text-primary">View All <i class="fa-solid fa-arrow-right small ms-1"></i></a>
+    </div>
+
+    <div class="row g-3 g-md-4">
+      <% if (categories && categories.length > 0) { %>
+        <% categories.forEach(cat => { %>
+          <div class="col-6 col-md-4 col-lg-2">
+            <a href="/products/category/<%= cat.slug %>" class="category-card">
+              <div class="category-img-wrap">
+                <img src="<%= cat.image || 'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=800&q=80' %>" alt="<%= cat.category_name %>" loading="lazy">
+              </div>
+              <h3 class="category-title"><%= cat.category_name %></h3>
+              <span class="category-count">Explore &rarr;</span>
+            </a>
+          </div>
+        <% }) %>
+      <% } %>
+    </div>
+  </section>
+
+  <!-- Trending / Featured Products Section -->
+  <section class="mb-5">
+    <div class="d-flex justify-content-between align-items-end mb-4">
+      <div>
+        <span class="text-uppercase text-muted fw-bold small" style="letter-spacing: 0.1em;">Editor's Selection</span>
+        <h2 class="fw-bold m-0" style="letter-spacing: -0.03em;">Trending Now</h2>
+      </div>
+      <a href="/products" class="text-decoration-none fw-semibold text-primary">Browse All <i class="fa-solid fa-arrow-right small ms-1"></i></a>
+    </div>
+
+    <div class="row g-4">
+      <% if (trendingProducts && trendingProducts.length > 0) { %>
+        <% trendingProducts.forEach(prod => { %>
+          <div class="col-6 col-md-4 col-lg-3">
+            <div class="product-card">
+              <div class="product-thumb-wrap">
+                <!-- Badges -->
+                <div class="product-badge-group">
+                  <% if (prod.discount_price && prod.discount_price < prod.price) { %>
+                    <span class="badge-luxe badge-sale">
+                      Save $<%= (prod.price - prod.discount_price).toFixed(0) %>
+                    </span>
+                  <% } %>
+                  <% if (prod.is_featured) { %>
+                    <span class="badge-luxe badge-featured">Featured</span>
+                  <% } %>
+                </div>
+
+                <!-- Wishlist Toggle -->
+                <form action="/account/wishlist/toggle/<%= prod.product_id %>" method="POST" class="m-0">
+                  <button type="submit" class="wishlist-btn-overlay" title="Save to wishlist">
+                    <i class="fa-regular fa-heart"></i>
+                  </button>
+                </form>
+
+                <a href="/products/<%= prod.slug %>" class="w-100 h-100">
+                  <img src="<%= prod.image || 'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=800&q=80' %>" alt="<%= prod.product_name %>" class="product-thumb" loading="lazy">
+                </a>
+              </div>
+
+              <div class="product-card-body">
+                <span class="product-category-sub"><%= prod.category_name %></span>
+                <h4 class="product-card-title">
+                  <a href="/products/<%= prod.slug %>"><%= prod.product_name %></a>
+                </h4>
+
+                <div class="product-price-row">
+                  <% if (prod.discount_price && prod.discount_price < prod.price) { %>
+                    <span class="price-current">$<%= parseFloat(prod.discount_price).toFixed(2) %></span>
+                    <span class="price-original">$<%= parseFloat(prod.price).toFixed(2) %></span>
+                  <% } else { %>
+                    <span class="price-current">$<%= parseFloat(prod.price).toFixed(2) %></span>
+                  <% } %>
+                </div>
+
+                <div class="product-card-actions">
+                  <% if (prod.stock > 0) { %>
+                    <form action="/cart/add" method="POST" class="w-100">
+                      <input type="hidden" name="productId" value="<%= prod.product_id %>">
+                      <input type="hidden" name="quantity" value="1">
+                      <button type="submit" class="btn btn-luxe-primary w-100">
+                        <i class="fa-solid fa-bag-shopping"></i> Add to Cart
+                      </button>
+                    </form>
+                  <% } else { %>
+                    <button class="btn btn-secondary w-100 disabled" disabled>Sold Out</button>
+                  <% } %>
+                </div>
+              </div>
+            </div>
+          </div>
+        <% }) %>
+      <% } %>
+    </div>
+  </section>
+
+  <!-- Editorial Promotional Banner -->
+  <section class="mb-5">
+    <div class="card border-0 rounded-4 overflow-hidden shadow-sm" style="background: linear-gradient(100deg, #18181b 0%, #27272a 100%);">
+      <div class="row g-0 align-items-center">
+        <div class="col-md-7 p-4 p-md-5 text-white">
+          <span class="badge bg-danger mb-3 px-3 py-2 text-uppercase fw-bold">Special Privilege</span>
+          <h2 class="display-6 fw-bold mb-3">Titanium Horology Meets Pure Sapphire Glass.</h2>
+          <p class="text-white-50 mb-4" style="max-width: 500px;">
+            Engineered from Grade-5 aerospace titanium with an ultra-deep AMOLED display. Complete health telemetry and 7-day battery resilience.
+          </p>
+          <a href="/products/category/watches-wearables" class="btn btn-light btn-lg px-4 rounded-pill fw-bold">Explore Chronos Line</a>
+        </div>
+        <div class="col-md-5 text-center p-4">
+          <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=800&q=80" alt="Chronos Watch" class="img-fluid rounded-4 shadow-lg" style="max-height: 320px; object-fit: cover;">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- New Arrivals Section -->
+  <section class="mb-5">
+    <div class="d-flex justify-content-between align-items-end mb-4">
+      <div>
+        <span class="text-uppercase text-muted fw-bold small" style="letter-spacing: 0.1em;">Fresh Drops</span>
+        <h2 class="fw-bold m-0" style="letter-spacing: -0.03em;">New Arrivals</h2>
+      </div>
+      <a href="/products" class="text-decoration-none fw-semibold text-primary">All Arrivals <i class="fa-solid fa-arrow-right small ms-1"></i></a>
+    </div>
+
+    <div class="row g-4">
+      <% if (latestProducts && latestProducts.length > 0) { %>
+        <% latestProducts.slice(0, 4).forEach(prod => { %>
+          <div class="col-6 col-md-4 col-lg-3">
+            <div class="product-card">
+              <div class="product-thumb-wrap">
+                <a href="/products/<%= prod.slug %>" class="w-100 h-100">
+                  <img src="<%= prod.image || 'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=800&q=80' %>" alt="<%= prod.product_name %>" class="product-thumb" loading="lazy">
+                </a>
+              </div>
+              <div class="product-card-body">
+                <span class="product-category-sub"><%= prod.category_name %></span>
+                <h4 class="product-card-title">
+                  <a href="/products/<%= prod.slug %>"><%= prod.product_name %></a>
+                </h4>
+                <div class="product-price-row">
+                  <span class="price-current">$<%= parseFloat(prod.discount_price || prod.price).toFixed(2) %></span>
+                  <% if (prod.discount_price) { %>
+                    <span class="price-original">$<%= parseFloat(prod.price).toFixed(2) %></span>
+                  <% } %>
+                </div>
+                <div class="product-card-actions">
+                  <a href="/products/<%= prod.slug %>" class="btn btn-luxe-outline w-100">View Details</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        <% }) %>
+      <% } %>
+    </div>
+  </section>
+
+  <!-- Customer Testimonials -->
+  <section class="py-5 bg-white rounded-4 border p-4 p-md-5 mb-5 shadow-sm">
+    <div class="text-center mb-5">
+      <span class="text-uppercase text-primary fw-bold small" style="letter-spacing: 0.12em;">Verified Patron Reviews</span>
+      <h2 class="fw-bold mt-1">Acclaimed by Discerning Clients</h2>
+    </div>
+    <div class="row g-4">
+      <div class="col-md-4">
+        <div class="p-4 rounded-3 bg-light h-100 d-flex flex-column justify-content-between">
+          <div>
+            <div class="text-warning mb-2">
+              <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+            </div>
+            <p class="text-muted fst-italic">"The studio wireless headphones have transformed my daily transatlantic flights. The acoustic clarity and isolation match my high-end studio monitors."</p>
+          </div>
+          <div class="d-flex align-items-center gap-3 pt-3 border-top">
+            <div class="fw-bold">Alexander M.</div>
+            <span class="badge bg-success-subtle text-success small">Verified Buyer</span>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="p-4 rounded-3 bg-light h-100 d-flex flex-column justify-content-between">
+          <div>
+            <div class="text-warning mb-2">
+              <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+            </div>
+            <p class="text-muted fst-italic">"The full-grain leather backpack is magnificent. It smells like artisanal Florentine leather and carries my 16-inch workstation securely."</p>
+          </div>
+          <div class="d-flex align-items-center gap-3 pt-3 border-top">
+            <div class="fw-bold">Sophia V.</div>
+            <span class="badge bg-success-subtle text-success small">Verified Buyer</span>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="p-4 rounded-3 bg-light h-100 d-flex flex-column justify-content-between">
+          <div>
+            <div class="text-warning mb-2">
+              <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+            </div>
+            <p class="text-muted fst-italic">"Fast 2-day delivery, luxurious black box packaging, and exemplary customer concierge service. LUXE sets the gold standard for online shopping."</p>
+          </div>
+          <div class="d-flex align-items-center gap-3 pt-3 border-top">
+            <div class="fw-bold">Marcus T.</div>
+            <span class="badge bg-success-subtle text-success small">Verified Buyer</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<%- include('../partials/footer') %>

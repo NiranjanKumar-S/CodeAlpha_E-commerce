@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= typeof pageTitle !== 'undefined' ? pageTitle : 'LUXE — Modern Elegance' %></title>
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>✦</text></svg>">
+  
+  <!-- Bootstrap 5 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  
+  <!-- Font Awesome 6 Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
+  <!-- Custom LUXE Stylesheet -->
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+  <!-- Top Announcement Bar -->
+  <div class="announcement-bar text-center">
+    <div class="container d-flex justify-content-between align-items-center">
+      <span class="d-none d-md-inline text-muted-white">✨ Complimentary shipping on all domestic orders over $100</span>
+      <div class="mx-auto mx-md-0">
+        <span>Use code <strong>WELCOME10</strong> for 10% off your first luxury order</span>
+      </div>
+      <div class="d-none d-md-flex align-items-center gap-3">
+        <a href="/contact" class="text-white text-decoration-none"><i class="fa-regular fa-headset me-1"></i> Concierge</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Primary Header & Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-luxe">
+    <div class="container">
+      <!-- Website Logo / Brand -->
+      <a class="navbar-brand navbar-brand-luxe" href="/">
+        <span>LUXE</span>
+        <span class="brand-dot"></span>
+      </a>
+
+      <!-- Mobile Toggle -->
+      <button class="navbar-toggler border-0 shadow-none" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMain" aria-controls="navbarMain" aria-expanded="false" aria-label="Toggle navigation">
+        <i class="fa-solid fa-bars fs-4 text-dark"></i>
+      </button>
+
+      <!-- Collapsible Nav Items -->
+      <div class="collapse navbar-collapse" id="navbarMain">
+        <!-- Navigation Links -->
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-3">
+          <li class="nav-item">
+            <a class="nav-link nav-link-luxe" href="/">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link nav-link-luxe" href="/products">All Products</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link nav-link-luxe dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Categories
+            </a>
+            <ul class="dropdown-menu border-0 shadow-lg rounded-3 py-2 mt-2">
+              <li><a class="dropdown-item py-2" href="/products/category/audio-sound"><i class="fa-solid fa-headphones me-2 text-muted"></i> Audio & Sound</a></li>
+              <li><a class="dropdown-item py-2" href="/products/category/watches-wearables"><i class="fa-solid fa-clock me-2 text-muted"></i> Watches & Wearables</a></li>
+              <li><a class="dropdown-item py-2" href="/products/category/computing-tech"><i class="fa-solid fa-laptop me-2 text-muted"></i> Computing & Tech</a></li>
+              <li><a class="dropdown-item py-2" href="/products/category/footwear-style"><i class="fa-solid fa-shoe-prints me-2 text-muted"></i> Footwear & Style</a></li>
+              <li><a class="dropdown-item py-2" href="/products/category/home-living"><i class="fa-solid fa-couch me-2 text-muted"></i> Home & Living</a></li>
+              <li><a class="dropdown-item py-2" href="/products/category/apparel-accessories"><i class="fa-solid fa-vest me-2 text-muted"></i> Apparel & Accessories</a></li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link nav-link-luxe" href="/about">About Us</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link nav-link-luxe" href="/contact">Contact</a>
+          </li>
+        </ul>
+
+        <!-- Search Form -->
+        <form class="nav-search-form me-lg-3 my-2 my-lg-0" action="/products" method="GET">
+          <i class="fa-solid fa-magnifying-glass nav-search-icon"></i>
+          <input class="form-control nav-search-input" type="search" name="search" placeholder="Search luxury products..." aria-label="Search" value="<%= typeof query !== 'undefined' && query.search ? query.search : '' %>">
+        </form>
+
+        <!-- Right Side: Account & Cart -->
+        <div class="d-flex align-items-center gap-2 mt-2 mt-lg-0">
+          <% if (typeof currentUser !== 'undefined' && currentUser) { %>
+            <div class="dropdown">
+              <button class="btn btn-luxe-outline dropdown-toggle d-flex align-items-center gap-2" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <i class="fa-regular fa-circle-user fs-6"></i>
+                <span class="d-none d-sm-inline fw-semibold"><%= currentUser.name.split(' ')[0] %></span>
+              </button>
+              <ul class="dropdown-menu dropdown-menu-end border-0 shadow-lg rounded-3 py-2 mt-2">
+                <li class="px-3 py-2 border-bottom text-muted small">
+                  Signed in as<br><strong class="text-dark"><%= currentUser.email %></strong>
+                </li>
+                <% if (currentUser.role === 'admin') { %>
+                  <li>
+                    <a class="dropdown-item py-2 text-primary fw-bold" href="/admin/dashboard">
+                      <i class="fa-solid fa-gauge-high me-2"></i> Admin Dashboard
+                    </a>
+                  </li>
+                  <li><hr class="dropdown-divider"></li>
+                <% } %>
+                <li><a class="dropdown-item py-2" href="/account"><i class="fa-regular fa-id-badge me-2 text-muted"></i> My Account</a></li>
+                <li><a class="dropdown-item py-2" href="/orders/my-orders"><i class="fa-solid fa-box-open me-2 text-muted"></i> Order History</a></li>
+                <li><a class="dropdown-item py-2" href="/account/wishlist"><i class="fa-regular fa-heart me-2 text-muted"></i> My Wishlist</a></li>
+                <li><hr class="dropdown-divider"></li>
+                <li>
+                  <form action="/auth/logout" method="POST" class="m-0 p-0">
+                    <button type="submit" class="dropdown-item py-2 text-danger">
+                      <i class="fa-solid fa-arrow-right-from-bracket me-2"></i> Sign Out
+                    </button>
+                  </form>
+                </li>
+              </ul>
+            </div>
+          <% } else { %>
+            <a href="/auth/login" class="btn btn-luxe-outline">Sign In</a>
+            <a href="/auth/register" class="btn btn-luxe-primary d-none d-sm-inline-flex">Join LUXE</a>
+          <% } %>
+
+          <!-- Cart Icon Button -->
+          <a href="/cart" class="cart-badge-btn ms-1" title="Shopping Cart">
+            <i class="fa-solid fa-bag-shopping"></i>
+            <span class="cart-count"><%= typeof cartItemCount !== 'undefined' ? cartItemCount : 0 %></span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+    <div class="container mt-3">
+      <%- include('./alerts') %>
+    </div>

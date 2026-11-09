@@ -1,0 +1,73 @@
+<%- include('../partials/header') %>
+
+<div class="container py-5">
+  <div class="row justify-content-center">
+    <div class="col-lg-8">
+      <div class="card border-0 shadow-lg rounded-4 p-4 p-md-5 bg-white text-center mb-4">
+        <div class="mb-3 text-success fs-1">
+          <i class="fa-solid fa-circle-check"></i>
+        </div>
+        <span class="text-uppercase text-muted fw-bold small" style="letter-spacing: 0.15em;">Transaction Completed</span>
+        <h1 class="display-6 fw-bold mt-1 mb-2">Thank You For Your Order!</h1>
+        <p class="text-muted">
+          Your order has been recorded in our system. A confirmation receipt has been dispatched to your email.
+        </p>
+
+        <div class="bg-light rounded-3 p-3 my-4 d-inline-block mx-auto border">
+          <span class="text-muted small">Unique Order Number:</span>
+          <div class="fw-bold fs-4 text-primary"><%= order.order_number %></div>
+        </div>
+
+        <div class="row g-4 text-start pt-3 border-top">
+          <div class="col-md-6">
+            <h6 class="fw-bold text-uppercase text-muted small">Delivery Address</h6>
+            <div class="fw-bold text-dark"><%= order.full_name %></div>
+            <div class="text-muted small"><%= order.phone %></div>
+            <div class="text-muted small"><%= order.address_line %></div>
+            <div class="text-muted small"><%= order.city %>, <%= order.state %> <%= order.postal_code %></div>
+          </div>
+          <div class="col-md-6">
+            <h6 class="fw-bold text-uppercase text-muted small">Order Summary</h6>
+            <div class="text-muted small">Payment Method: <strong class="text-uppercase text-dark"><%= order.payment_method %></strong></div>
+            <div class="text-muted small">Payment Status: <strong class="text-capitalize text-dark"><%= order.payment_status %></strong></div>
+            <div class="text-muted small">Order Status: <strong class="text-dark"><%= order.order_status %></strong></div>
+            <div class="text-muted small mt-1">Total Amount: <strong class="fs-6 text-dark">$<%= parseFloat(order.total_amount).toFixed(2) %></strong></div>
+          </div>
+        </div>
+
+        <div class="mt-4 pt-3 border-top text-start">
+          <h6 class="fw-bold mb-3">Items in this Delivery</h6>
+          <div class="table-responsive">
+            <table class="table table-sm align-middle">
+              <tbody>
+                <% if (items && items.length > 0) { %>
+                  <% items.forEach(item => { %>
+                    <tr>
+                      <td style="width: 50px;">
+                        <img src="<%= item.product_image || 'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=800&q=80' %>" alt="" class="rounded-2" style="width: 40px; height: 40px; object-fit: cover;">
+                      </td>
+                      <td class="fw-semibold small"><%= item.product_name %></td>
+                      <td class="text-muted small">Qty: <%= item.quantity %></td>
+                      <td class="text-end fw-bold small">$<%= parseFloat(item.subtotal).toFixed(2) %></td>
+                    </tr>
+                  <% }) %>
+                <% } %>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="d-flex flex-wrap justify-content-center gap-3 mt-4">
+          <a href="/orders/my-orders" class="btn btn-luxe-outline rounded-pill px-4">
+            <i class="fa-solid fa-box-open me-2"></i> View Order History
+          </a>
+          <a href="/products" class="btn btn-luxe-primary rounded-pill px-4">
+            <i class="fa-solid fa-bag-shopping me-2"></i> Continue Shopping
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%- include('../partials/footer') %>
