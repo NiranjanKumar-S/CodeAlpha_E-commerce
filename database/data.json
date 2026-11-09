@@ -32,17 +32,6 @@
       "reset_token": null,
       "reset_token_expiry": null,
       "created_at": "2026-01-03T00:00:00.000Z"
-    },
-    {
-      "user_id": 4,
-      "name": "Test Customer",
-      "email": "testuser_1794211866709@example.com",
-      "phone": "+1-555-9988",
-      "password": "$2b$10$PnaoC/cO2O/vKUFrzOEyHuUXPWOL/nrjcLpNFjMxaciI26p4VbsX.",
-      "role": "customer",
-      "reset_token": null,
-      "reset_token_expiry": null,
-      "created_at": "2026-11-09T08:11:06.814Z"
     }
   ],
   "categories": [
@@ -104,7 +93,7 @@
       "description": "Engineered with 40mm beryllium drivers, active noise cancellation with transparency mode, 45-hour battery life, and buttery soft memory foam ear cushions.",
       "price": 299,
       "discount_price": 249,
-      "stock": 44,
+      "stock": 45,
       "image": "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=800&q=80",
       "status": "active",
       "is_featured": 1,
@@ -277,122 +266,7 @@
       "created_at": "2026-01-12T00:00:00.000Z"
     }
   ],
-  "carts": [
-    {
-      "cart_id": 1,
-      "user_id": null,
-      "session_id": "test_session_1794211866815",
-      "created_at": "2026-11-09T08:11:06.816Z"
-    },
-    {
-      "cart_id": 2,
-      "user_id": null,
-      "session_id": "order_test_1794211866820",
-      "created_at": "2026-11-09T08:11:06.820Z"
-    },
-    {
-      "cart_id": 3,
-      "user_id": null,
-      "session_id": "4txZMk9sfmqsZpTXmSCkHTc-5J0VuDM5",
-      "created_at": "2026-11-09T08:11:08.654Z"
-    },
-    {
-      "cart_id": 4,
-      "user_id": null,
-      "session_id": "eQusMh49owQ8znWC5CwKy2ogsiDnFHI9",
-      "created_at": "2026-11-09T08:11:08.705Z"
-    },
-    {
-      "cart_id": 5,
-      "user_id": null,
-      "session_id": "cbVda90nHPAAseXPlAc2r_8gUvAtuOhW",
-      "created_at": "2026-11-09T08:11:08.728Z"
-    },
-    {
-      "cart_id": 6,
-      "user_id": null,
-      "session_id": "tLK6CgNFzvD0I4X6_sIdRIGmBuiiUfAj",
-      "created_at": "2026-11-09T08:11:08.750Z"
-    },
-    {
-      "cart_id": 7,
-      "user_id": null,
-      "session_id": "ODGCi3w6OTtTdaG7WUGgWTpoEYPD-ZXO",
-      "created_at": "2026-11-09T08:11:08.904Z"
-    },
-    {
-      "cart_id": 8,
-      "user_id": null,
-      "session_id": "_NRjBWVv7yU6RUY_jQ3EOce6K__adQ70",
-      "created_at": "2026-11-09T08:11:08.921Z"
-    },
-    {
-      "cart_id": 9,
-      "user_id": null,
-      "session_id": "_-qvlf2ieqRb4e5fxwedDStDoGxrpvdq",
-      "created_at": "2026-11-09T08:11:08.938Z"
-    },
-    {
-      "cart_id": 10,
-      "user_id": null,
-      "session_id": "FI0qIDTvDtWULdguVg4s77qm42cddMyv",
-      "created_at": "2026-11-09T08:11:08.952Z"
-    },
-    {
-      "cart_id": 11,
-      "user_id": null,
-      "session_id": "W52jtptvcZ9f_d8_DUO8q4DkU9jSu8nS",
-      "created_at": "2026-11-09T08:11:08.968Z"
-    },
-    {
-      "cart_id": 12,
-      "user_id": null,
-      "session_id": "Xo7XctlEBM0AGRdEWeTpRikW4pNPY_jf",
-      "created_at": "2026-11-09T08:11:08.985Z"
-    },
-    {
-      "cart_id": 13,
-      "user_id": null,
-      "session_id": "ZDgchpflGtk83kgARLuGHNFYABM8Cm5Y",
-      "created_at": "2026-11-09T08:11:09.000Z"
-    },
-    {
-      "cart_id": 14,
-      "user_id": null,
-      "session_id": "zVO6Ysa_0vo5Vizx5V4zOPWwU7iVNuYO",
-      "created_at": "2026-11-09T08:11:09.019Z"
-    },
-    {
-      "cart_id": 15,
-      "user_id": null,
-      "session_id": "jedprELAX-6dqnNDMa9Bbp_cuDzdnpNm",
-      "created_at": "2026-11-09T08:11:09.034Z"
-    },
-    {
-      "cart_id": 16,
-      "user_id": null,
-      "session_id": "H2BXVOOaWA7DDgVUL9Kb3yNGycr0B1wQ",
-      "created_at": "2026-11-09T08:11:09.044Z"
-    },
-    {
-      "cart_id": 17,
-      "user_id": null,
-      "session_id": "1ASNLD9p2vzQUlIvVbaobWmuLaFBFVp_",
-      "created_at": "2026-11-09T08:11:09.052Z"
-    },
-    {
-      "cart_id": 18,
-      "user_id": null,
-      "session_id": "ZVNXG6cXvxlgTTjVxMfPdwBHT-KhiMSn",
-      "created_at": "2026-11-09T08:11:09.131Z"
-    },
-    {
-      "cart_id": 19,
-      "user_id": 1,
-      "session_id": null,
-      "created_at": "2026-11-09T08:11:09.347Z"
-    }
-  ],
+  "carts": [],
   "cart_items": [],
   "addresses": [
     {
@@ -416,17 +290,6 @@
       "state": "NY",
       "postal_code": "10001",
       "created_at": "2026-01-03T00:00:00.000Z"
-    },
-    {
-      "address_id": 1,
-      "user_id": null,
-      "full_name": "Jane Test",
-      "phone": "+1-555-7766",
-      "address_line": "123 Test Street",
-      "city": "Portland",
-      "state": "OR",
-      "postal_code": "97201",
-      "created_at": "2026-11-09T08:11:06.821Z"
     }
   ],
   "orders": [
@@ -443,7 +306,7 @@
       "payment_method": "cod",
       "payment_status": "paid",
       "order_status": "Delivered",
-      "created_at": "2026-11-04T08:10:58.454Z"
+      "created_at": "2026-11-04T08:17:11.279Z"
     },
     {
       "order_id": 2,
@@ -458,7 +321,7 @@
       "payment_method": "online",
       "payment_status": "paid",
       "order_status": "Processing",
-      "created_at": "2026-11-07T08:10:58.454Z"
+      "created_at": "2026-11-07T08:17:11.279Z"
     },
     {
       "order_id": 3,
@@ -473,22 +336,7 @@
       "payment_method": "cod",
       "payment_status": "pending",
       "order_status": "Pending",
-      "created_at": "2026-11-09T08:10:58.454Z"
-    },
-    {
-      "order_id": 4,
-      "order_number": "ORD-20261109-5169",
-      "user_id": null,
-      "address_id": 1,
-      "subtotal": 249,
-      "shipping_fee": 0,
-      "discount_amount": 24.9,
-      "total_amount": 224.1,
-      "coupon_code": "WELCOME10",
-      "payment_method": "cod",
-      "payment_status": "paid",
-      "order_status": "Shipped",
-      "created_at": "2026-11-09T08:11:06.822Z"
+      "created_at": "2026-11-09T08:17:11.279Z"
     }
   ],
   "order_items": [
@@ -521,16 +369,6 @@
       "quantity": 1,
       "price": 159,
       "subtotal": 159
-    },
-    {
-      "order_item_id": 4,
-      "order_id": 4,
-      "product_id": 1,
-      "product_name": "Luxe Sonic Studio Wireless Headphones",
-      "product_image": "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=800&q=80",
-      "quantity": 1,
-      "price": 249,
-      "subtotal": 249
     }
   ],
   "reviews": [
@@ -608,12 +446,12 @@
     {
       "subscriber_id": 1,
       "email": "vip.customer@example.com",
-      "created_at": "2026-11-09T08:10:58.454Z"
+      "created_at": "2026-11-09T08:17:11.279Z"
     },
     {
       "subscriber_id": 2,
       "email": "tech.insider@example.com",
-      "created_at": "2026-11-09T08:10:58.454Z"
+      "created_at": "2026-11-09T08:17:11.279Z"
     }
   ],
   "wishlists": [
@@ -621,7 +459,7 @@
       "wishlist_id": 1,
       "user_id": 2,
       "product_id": 2,
-      "created_at": "2026-11-09T08:10:58.454Z"
+      "created_at": "2026-11-09T08:17:11.279Z"
     }
   ]
 }
